@@ -16,6 +16,8 @@ class ViewController: UIViewController {
       
       //MARK: - Outlets
       @IBOutlet weak var slider : UISlider!
+      
+      //MARK: - View life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,14 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+      
+      //MARK: - Rounds Methods 
+      
+      func startNewRound()  {
+            currentValue = 50
+            targetValue = 1 + Int(arc4random_uniform(100))
+            slider.value = Float(currentValue)
+      }
       
       //MARK: - Actions
 
