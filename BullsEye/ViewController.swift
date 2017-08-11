@@ -9,11 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
+      
+      //MARK: - Variables
+      var currentValue : Int = 50
+      var targetValue : Int = 0
+      
+      //MARK: - Outlets
+      @IBOutlet weak var slider : UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+        currentValue = lroundf(slider.value)
+      targetValue = 1 + Int(arc4random_uniform(100))
+      }
     @IBAction func buttonClicked(_ sender: UIButton) {
         print("You finished!")
     }
@@ -22,14 +30,23 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+      
+      //MARK: - Actions
 
 @IBAction func showAlert()
 {
-    let alert = UIAlertController(title: "Hello world", message: "this is my first app", preferredStyle: .alert)
-    let action = UIAlertAction(title: "ok", style: .default, handler: nil)
+      let message = "Slider value is : \(currentValue)" + "\n the target value is :\(targetValue)"
+    let alert = UIAlertController(title: "Hello world", message: message, preferredStyle: .alert)
+    let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
     alert.addAction(action)
     present(alert, animated: true, completion: nil)
     
 }
+    @IBAction func sliderMoved (_ slider : UISlider)
+    {
+       // print("slider value now is \(slider.value)")
+    currentValue = lroundf(slider.value)
+      //print("slider value now is \(currentValue)")
+    }
 }
 
