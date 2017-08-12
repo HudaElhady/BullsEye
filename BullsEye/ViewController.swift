@@ -25,6 +25,7 @@ class ViewController: UIViewController {
       
       
       //MARK: - View life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
       let imageNormal = #imageLiteral(resourceName: "SliderThumb-Normal")
@@ -53,6 +54,14 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+      
+      //MARK: - Rounds Methods 
+      
+      func startNewRound()  {
+            currentValue = 50
+            targetValue = 1 + Int(arc4random_uniform(100))
+            slider.value = Float(currentValue)
+      }
       
       
       func startNewRound()  {
